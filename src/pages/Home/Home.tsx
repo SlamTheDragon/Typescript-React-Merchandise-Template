@@ -1,11 +1,17 @@
-import { Link } from "react-router-dom";
-import Button from "../../components/common/Button/Button";
+import Footer from "../../components/common/Footer/Footer";
+import Navigation from "../../components/common/Navigation/Navigation";
+import '../../index.scss';
 
 function Home() {
 	return (
 		<>
-			hello worl
-			<Button href="/test" label="test"/>
+			<Navigation/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<span>this is a thing called uh yes</span>
+			<Footer/>
 		</>
 	);
 }

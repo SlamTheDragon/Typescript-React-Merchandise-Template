@@ -1,0 +1,37 @@
+@import '../../../index.scss';
+
+nav {
+    @include wight(100%, 60px);
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $background-accent;
+    z-index: 1;
+
+    .m-nav-main {
+        @include flex-center;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .m-user-control {
+        @include flex-center;
+    }
+
+    .m-nav-btn {
+        margin: 0;
+        font-size: 16px;
+    }
+
+    ul {
+        list-style-type: none;
+        margin-block-start: unset;
+        margin-block-end: unset;
+        padding-inline-start: unset;
+    }
+
+    li {
+        display: inline-block;
+    }
+}

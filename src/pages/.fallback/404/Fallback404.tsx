@@ -1,15 +1,15 @@
 import React from "react";
+import Navigation from "../../../components/common/Navigation/Navigation";
 
 function Fallback404() {
 	return (
 		<>	
-
-			<div className="align-middle">				
+			<Navigation/>
+			<div className="align center fill-view no-select">				
 				<h1>404</h1>
-				<hr/>
-				Page Not Found!
+				<div className="divider" style={{ height: '10%'}}/>
+				Page Not Found
 			</div>
-
 		</>
 	);
 }
