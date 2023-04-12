@@ -1,0 +1,18 @@
+@import '../../../index.scss';
+
+.m-featured {
+    @include wight(95%, 85vh);
+    @include flex-center;
+    @include mard(80px, unset);
+    background-image: url("https://s3-alpha.figma.com/hub/file/948140848/1f4d8ea7-e9d9-48b7-b70c-819482fb10fb-cover.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-blend-mode: overlay;
+
+    flex-direction: column;
+    
+    .divider {
+        width: 40%;
+    }
+}

@@ -1,0 +1,8 @@
+@import '../../../index.scss';
+
+footer {
+    @include flex-center;
+    @include wight(100%, 400px);
+    flex-direction: column;
+    background-color: $background-accent;
+}

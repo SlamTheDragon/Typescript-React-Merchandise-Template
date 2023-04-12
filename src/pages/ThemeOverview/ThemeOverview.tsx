@@ -6,19 +6,49 @@ import ThemeSwitcher from '../../components/common/ThemeSwitcher/ThemeSwitcher';
 export default function ThemeOverview() {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
+    // const history = useNavigate();
+
+    // let handleClick = () => {
+    //     history('/');
+    // };
+
     const openModal = () => {
         setIsModalOpen(true);
+        document.body.classList.add('disable-events');
+        document.addEventListener('keydown', handleEscapeKeyPress);
+
+        const outsideElements = document.querySelectorAll('button');
+        outsideElements.forEach((element) => {
+            element.setAttribute('tabindex', '-1');
+        });
+
+    };
+
+    const handleEscapeKeyPress = (event: KeyboardEvent) => {
+        if (event.key === 'Escape') {
+            closeModal();
+        }
     };
 
     const closeModal = () => {
         setIsModalOpen(false);
+        document.removeEventListener('keydown', handleEscapeKeyPress);
+
+        const outsideElements = document.querySelectorAll('button');
+        outsideElements.forEach((element) => {
+            element.removeAttribute('tabindex');
+        });
+    };
+
+    const handleMouseEnter = () => {
+        document.body.classList.remove('disable-events');
     };
 
     return (
         <>
-            <Modal isOpen={isModalOpen} onClose={closeModal}>
-                <h2>Modal Title</h2>
+            <Modal isOpen={isModalOpen} onClose={closeModal} onMouseEnter={handleMouseEnter} modalTitle={'Modal Title'}>
                 <p>Modal content goes here.</p>
+                <p>go to: <code>src/components/widgets/modals</code> to load modal contents you desire</p>
             </Modal>
             
             <h1>Header 1</h1>
@@ -36,38 +66,38 @@ export default function ThemeOverview() {
                 <span>Default Card Content</span>
             </div>
 
+            <div className='card'>
+                <h1>Function Buttons</h1>
+                <ThemeSwitcher />
+                <Button classItem={'m-btn ctrl-btn material-symbols-outlined'} onclick={openModal}>shopping_cart</Button>
+            </div>
+
             {/* These Icons can be found on https://fonts.google.com/icons */}
 
-            <Button label={'Button Default'} classItem={'m-btn'}/>
-            <Button label={'Button Primary'} classItem={'m-btn primary'}/>
-            <Button label={'Button Secondary'} classItem={'m-btn secondary'}/>
-            <Button label={'Button Warn'} classItem={'m-btn warn'}/>
-            <Button label={'Button Alert'} classItem={'m-btn alert'}/>
-            <Button label={'Button Disabled'} classItem={'m-btn disabled'}/>
+            <Button classItem={'m-btn'}>Button Default</Button>
+            <Button classItem={'m-btn primary'}>Button Primary</Button>
+            <Button classItem={'m-btn secondary'}>Button Secondary</Button>
+            <Button classItem={'m-btn warn'}>Button Warn</Button>
+            <Button classItem={'m-btn alert'}>Button Alert</Button>
+            <Button classItem={'m-btn disabled'}>Button Disabled</Button>
             
-            <Button label={'category'} classItem={'m-btn ctrl-btn material-symbols-outlined'}/>
-            <Button label={'info'} classItem={'m-btn ctrl-btn material-symbols-outlined'}/>
-            <Button label={'warning'} classItem={'m-btn ctrl-btn material-symbols-outlined'}/>
-            <Button label={'close'} classItem={'m-btn ctrl-btn material-symbols-outlined'}/>
-            <Button label={'favorite'} classItem={'m-btn ctrl-btn material-symbols-outlined'}/>
-            <Button label={'add'} classItem={'m-btn ctrl-btn material-symbols-outlined'}/>
-            <Button label={'cancel'} classItem={'m-btn ctrl-btn material-symbols-outlined'}/>
-            <Button label={'more_vert'} classItem={'m-btn ctrl-btn material-symbols-outlined'}/>
-            <Button label={'refresh'} classItem={'m-btn ctrl-btn material-symbols-outlined'}/>
-            <Button label={'close_fullscreen'} classItem={'m-btn ctrl-btn material-symbols-outlined'}/>
+            <Button classItem={'m-btn ctrl-btn material-symbols-outlined'}>category</Button>
+            <Button classItem={'m-btn ctrl-btn material-symbols-outlined'}>info</Button>
+            <Button classItem={'m-btn ctrl-btn material-symbols-outlined'}>warning</Button>
+            <Button classItem={'m-btn ctrl-btn material-symbols-outlined'}>close</Button>
+            <Button classItem={'m-btn ctrl-btn material-symbols-outlined'}>favorite</Button>
+            <Button classItem={'m-btn ctrl-btn material-symbols-outlined'}>add</Button>
+            <Button classItem={'m-btn ctrl-btn material-symbols-outlined'}>cancel</Button>
+            <Button classItem={'m-btn ctrl-btn material-symbols-outlined'}>more_vert</Button>
+            <Button classItem={'m-btn ctrl-btn material-symbols-outlined'}>refresh</Button>
+            <Button classItem={'m-btn ctrl-btn material-symbols-outlined'}>close_fullscreen</Button>
 
             <div className='divider'/>
             <br/>
-            <Button label={'Button Default'} classItem={'m-btn'}/>
-            <Button label={'Button Primary Accent'} classItem={'m-btn primary p-accent'}/>
-            <Button label={'Button Secondary Accent'} classItem={'m-btn secondary s-accent'}/>
+            <Button classItem={'m-btn'}>Button Default</Button>
+            <Button classItem={'m-btn primary p-accent'}>Button Primary Accent</Button>
+            <Button classItem={'m-btn secondary s-accent'}>Button Secondary Accent</Button>
 
-            <br/>
-            <div className='card'>
-                <h1>Function Buttons</h1>
-                <ThemeSwitcher/>
-                <Button label={'shopping_cart'} classItem={'m-btn ctrl-btn material-symbols-outlined'} onclick={openModal} />
-            </div>
         </>
     );
 }

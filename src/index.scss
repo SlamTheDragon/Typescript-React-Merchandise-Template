@@ -50,11 +50,13 @@
 
     @if $class == 0 {
         &:hover {
+            // z-index: 0;
             filter: $hover-brightness-light;
         }
     }
     @else if $class == 1 {
         &:hover {
+            // z-index: 0;
             filter: $hover-brightness-dark;
         }
     }
@@ -111,6 +113,17 @@
     cursor: pointer;
 }
 
+@mixin card-default {
+    @include no-select();
+    @include shadow();
+    @include mard(10px, 20px);
+    @include transition();
+
+    // z-index: -1;
+    border-radius: 10px;
+    background-color: $background-accent;
+}
+
 
 // ==========================
 // [    component styles    ]
@@ -156,9 +169,8 @@
 }
 
 .disabled {
-    z-index: -1;
     cursor: not-allowed;
-    filter: grayscale(100%) brightness(90%);
+    // filter: grayscale(100%) brightness(90%);
     
     &:hover {
         filter: grayscale(100%);
@@ -171,23 +183,14 @@
 .ctrl-btn {
     @include wight(50px, 50px);
     @include mard(2px, 5px);
+    @include flex-center();
     border-radius: 100%;
     font-size: large;
 }
 
 // # Cards
 .card {
-    @include no-select();
-    @include shadow();
-    @include onHover(1);
-    @include mard(10px, 20px);
-
-    border-radius: 10px;
-    background-color: $background-accent;
-
-    &:hover {
-        transform: translateY(-2px);
-    }
+    @include card-default;
 }
 
 // # Content Breakers | Dividers
@@ -235,9 +238,20 @@ body {
     @include mard(0, unset);
     @include transition();
     color: $color;
+    fill: $color;
     background-color: $background;
 
     overflow-x: hidden;
+}
+
+.viewport-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.disable-events {
+    pointer-events: none;
 }
 
 .material-symbols-outlined {

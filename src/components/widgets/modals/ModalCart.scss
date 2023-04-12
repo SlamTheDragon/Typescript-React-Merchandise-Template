@@ -1,0 +1,70 @@
+@import '../../../index.scss';
+
+
+.modal-container {
+    @include wight(100%, 100%);
+    overflow: hidden;
+
+    .modal-cart-loader,
+    .modal-cart {
+        @include wight(100%, 100%);
+        overflow-x: hidden;
+        overflow-y: scroll;
+
+        .modal-loader {
+            @include mard(2px, 2px);
+            @include card-default;
+            
+            opacity: 0.5;
+            background-color: $use-loader-color;
+            box-shadow: none;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            
+            animation: pulse 5s ease-in-out 0s infinite normal forwards;
+        }
+        
+        .cart-items {
+            cursor: pointer;
+            @include card-default;
+            @include mard(unset, 5px 20px);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: none;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+
+            border-bottom: 0.5px solid $color-accent;
+            border-radius: unset;
+
+            &:hover{
+                @include onHover(1);
+            }
+        }
+
+        @keyframes pulse {
+        
+            0%,
+            50%,
+            100% {
+                filter: brightness(100%);
+            }
+            
+            25%,
+            75% {
+                filter: brightness(50%);
+            }
+        }
+    }
+    
+    ::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.cart-footer {
+    @include flex-center;
+    justify-content: flex-end;
+}

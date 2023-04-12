@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
-import Button from '../Button/Button';
+import { ReactComponent as DarkMode } from '@material-design-icons/svg/filled/dark_mode.svg';
+import Button from '../../common/Button/Button';
+
 
 export default function ThemeSwitcher() {
     const [theme, setTheme] = useState(() => {
@@ -20,8 +22,8 @@ export default function ThemeSwitcher() {
         window.localStorage.setItem("theme", newTheme);
         document.documentElement.setAttribute('data-theme', newTheme);
     };
-    
+
     return (
-        <Button label={'dark_mode'} classItem={'m-btn ctrl-btn material-symbols-outlined'} onclick={toggleTheme} />
+        <Button classItem={'m-btn ctrl-btn'} onclick={toggleTheme}><DarkMode /></Button>
     );
 }

@@ -2,36 +2,48 @@
 
 nav {
     @include wight(100%, 60px);
+    @include shadow;
     display: flex;
     position: fixed;
+    top: 0;
     justify-content: space-between;
     align-items: center;
     background-color: $background-accent;
-    z-index: 1;
-
+    border-bottom: 1px solid $primary-color;
+    // z-index: 1;
+    
     .m-nav-main {
         @include flex-center;
+        height: 100%;
         display: flex;
         flex-direction: row;
+    }
+
+    .m-nav-links {
+        height: 100%;
     }
 
     .m-user-control {
         @include flex-center;
     }
 
-    .m-nav-btn {
-        margin: 0;
-        font-size: 16px;
-    }
-
+    
     ul {
+        height: 100%;
         list-style-type: none;
         margin-block-start: unset;
         margin-block-end: unset;
         padding-inline-start: unset;
     }
-
+    
     li {
+        height: 100%;
         display: inline-block;
+        .m-nav-btn {
+            height: 100%;
+            margin: 0;
+            font-size: 16px;
+            border-radius: 0;
+        }
     }
 }

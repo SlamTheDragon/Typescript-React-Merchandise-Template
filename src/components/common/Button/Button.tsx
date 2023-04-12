@@ -1,17 +1,16 @@
-import { Link } from "react-router-dom";
+import React from 'react';
 
 
 interface ButtonInterface {
-    label: string;
     classItem: string;
     href?: string;
     onclick?: () => any;
+    children?: React.ReactNode;
 }
 
-export default function Button({ label, href, classItem, onclick }: ButtonInterface) {
+export default function Button({ classItem, children, onclick }: ButtonInterface): JSX.Element {
+
     return (
-        (href)?
-            (<Link className={classItem} to={href}> {label} </Link>) : 
-            (<button className={classItem} onClick={onclick}> {label} </button>)
+        (<button className={classItem} onClick={onclick}> {children} </button>)
     );
 }

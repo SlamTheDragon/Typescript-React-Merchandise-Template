@@ -1,0 +1,32 @@
+@import '../../../index.scss';
+
+
+.m-shelf {
+    @include wight(60%, unset);
+    @include mard(100px, 100px);
+    background-color: $background;
+    border: 2px solid $primary-color;
+    // z-index: -1;
+
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+    
+    .m-item {
+        @include wight(260px, 260px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        background-image: url("https://s3-alpha.figma.com/hub/file/948140848/1f4d8ea7-e9d9-48b7-b70c-819482fb10fb-cover.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-blend-mode: overlay;
+        background-size: 200%;
+        
+
+        button {
+            // z-index: 0;
+        }
+    }
+}
